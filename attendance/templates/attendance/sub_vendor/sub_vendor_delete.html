@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="m-4">
+        <h1>Confirm Deletion of {{ object.sub_vendor_name }}</h1>
+        <hr>
+        <a href="{% url 'sub-vendor-detail' vendor_id object.id %}" class="btn btn-lg mr-2 btn-outline-secondary">Cancel</a>
+        <form method="post" style="display: inline-block">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-lg btn-outline-danger">Delete Sub Vendor</button>
+        </form>
+    </div>
+{% endblock %}

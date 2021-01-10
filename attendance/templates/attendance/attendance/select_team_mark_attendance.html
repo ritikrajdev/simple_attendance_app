@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h1 class="margin-1rem">Select Team</h1>
+    <hr>
+    <select name="teams" id="teams" class="margin-1rem">
+        {% for team in teams %}
+            <option value="{{ team.team_name }}">{{ team }}</option>
+        {% endfor %}
+    </select>
+    <button class="btn btn-outline-dark" onclick="navigateToTeam()">Select</button>
+
+    <script>
+        function navigateToTeam() {
+            const {value} = document.querySelector('#teams');
+            window.location.href += '?team_name=' + value
+        }
+    </script>
+{% endblock %}

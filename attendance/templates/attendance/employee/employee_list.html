@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="row m-4">
+    {% for employee in object_list %}
+        <div class="p-1 col-md-4" style="text-align: center">
+            <a href="{% url 'employee-detail' team_id employee.id %}" class="btn btn-outline-dark btn-lg">{{ employee }}</a>
+        </div>
+    {% endfor %}
+    </div>
+    <a href="{% url 'employee-create' team_id %}" class="m-4 btn-outline-dark btn btn-lg" style="display: block">Create Employee</a>
+{% endblock %}

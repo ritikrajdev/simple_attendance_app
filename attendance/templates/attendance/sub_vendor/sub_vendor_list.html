@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="row m-4">
+    {% for sub_vendor in object_list %}
+        <div class="p-1 col-md-4" style="text-align: center">
+            <a href="{% url 'sub-vendor-detail' sub_vendor.vendor_id sub_vendor.id %}" class="btn btn-outline-dark btn-lg">{{ sub_vendor }}</a>
+        </div>
+    {% endfor %}
+    </div>
+    <a href="{% url 'sub-vendor-create' vendor_id %}" class="m-4 btn-outline-dark btn btn-lg" style="display: block">Create Sub Vendor</a>
+{% endblock %}

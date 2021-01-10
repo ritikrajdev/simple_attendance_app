@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block head %}
+    <style>
+        .control-label {
+            font-size: 1.2rem;
+        }
+        .control-group {
+            margin: 1rem;
+        }
+        .textinput {
+            font-size: 1.1rem;
+            padding: 3px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1 class="margin-1rem">Sub Vendor</h1>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-lg btn-outline-dark margin-1rem">Submit</button>
+    </form>
+{% endblock %}

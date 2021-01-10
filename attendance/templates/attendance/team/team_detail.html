@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="m-4">
+        <h1>{{ object.team_name }}</h1>
+        <hr>
+        <p>Team Leader: {{ object.team_leader }}</p>
+        <p>Supervisor: {{ object.supervisor }}</p>
+        <p>CRT Date: {{ object.crt_date }}</p>
+        <p>Location: {{ object.location }}</p>
+    </div>
+    <div class="m-4">
+        <a href="{% url 'team-update' sub_vendor_id object.id %}" class="btn btn-outline-secondary">Update Team</a>
+        <a href="{% url 'team-delete' sub_vendor_id object.id %}" class="btn btn-outline-danger">Delete Team</a>
+        <a href="{% url 'employee-list' object.id %}" class="btn btn-outline-dark">List Employees</a>
+    </div>
+{% endblock %}

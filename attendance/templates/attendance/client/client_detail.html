@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="m-4">
+        <h1>{{ object.client_name }}</h1>
+        <hr>
+        <p>Head Office: {{ object.head_office }}</p>
+        <p>Contact Person: {{ object.contact_person_name }}</p>
+        <p>Mobile Number: {{ object.mobile_number }}</p>
+    </div>
+    <div class="m-4">
+        <a href="{% url 'client-update' object.id %}" class="btn btn-outline-secondary">Update Client</a>
+        <a href="{% url 'client-delete' object.id %}" class="btn btn-outline-danger">Delete Client</a>
+        <a href="{% url 'vendor-list' object.id %}" class="btn btn-outline-dark">List Vendors</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="m-4">
+        <h1>Confirm Deletion of {{ object.client_name }}</h1>
+        <hr>
+        <a href="{% url 'client-detail' object.id %}" class="btn btn-lg mr-2 btn-outline-secondary">Cancel</a>
+        <form method="post" style="display: inline-block">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-lg btn-outline-danger">Delete Client</button>
+        </form>
+    </div>
+{% endblock %}

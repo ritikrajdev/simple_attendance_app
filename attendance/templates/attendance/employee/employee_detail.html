@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="m-4">
+        <h1>{{ object.promoter_name }}</h1>
+        <hr>
+        <p>Promoter Id: {{ object.promoter_id }}</p>
+        <p>Promoter Name: {{ object.promoter_name }}</p>
+        <p>Address: {{ object.address }}</p>
+        <p>city: {{ object.city }}</p>
+        <p>State: {{ object.state }}</p>
+        <p>Pin Code: {{ object.pin_code }}</p>
+        <p>Date Of Joining: {{ object.date_of_joining }}</p>
+        <p>Date Of Leaving: {{ object.date_of_leaving }}</p>
+        <p>KYC Document Number: {{ object.kyc_document_number }}</p>
+        <p>Wage: {{ object.wage }}</p>
+        <p>Bank Name: {{ object.bank_name }}</p>
+        <p>Name on Account: {{ object.name_on_account }}</p>
+        <p>Account Number: {{ object.account_number }}</p>
+        <p>IFSC Code: {{ object.ifsc_code}}</p>
+        <p>Blood Group: {{ object.blood_group }}</p>
+        <p>Emergency Number: {{ object.emergency_number }}</p>
+    </div>
+    <div class="m-4">
+        <a href="{% url 'employee-update' team_id object.id %}" class="btn btn-outline-secondary">Update Employee</a>
+        <a href="{% url 'employee-delete' team_id object.id %}" class="btn btn-outline-danger">Delete Employee</a>
+    </div>
+{% endblock %}

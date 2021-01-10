@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <table class="table">
+        <tr>
+            <th>Employee</th>
+            <th>Time Manday</th>
+            <th>Sale Manday</th>
+            <th>Date</th>
+        </tr>
+
+        {% for query in attendance_list %}
+                <tr>
+                    <td>{{ query.employee }}</td>
+                    <td>{{ query.time_manday }}</td>
+                    <td>{{ query.sale_manday }}</td>
+                    <td>{{ query.date }}</td>
+                </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}

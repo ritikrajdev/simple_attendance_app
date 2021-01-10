@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block head %}
+    <style>
+        .image-wrapper {
+            border-radius: 8px;
+            border: 2px dashed black;
+            margin: 5px;
+            position: relative;
+        }
+
+        #image-preview {
+            width: calc(100% - 16px);
+            margin: 8px;
+            height: 30vh;
+            overflow: auto;
+        }
+
+        .image-wrapper {
+            border-radius: 8px;
+            border: 2px dashed black;
+            margin: 5px;
+            position: relative;
+        }
+
+        #image-preview {
+            width: calc(100% - 16px);
+            margin: 8px;
+            height: 30vh;
+            overflow: auto;
+        }
+
+        .table-wrapper {
+            height: 30vh;
+            overflow-y: auto;
+            border: 2px solid black;
+            border-radius: 8px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1 class="margin-1rem">Mark - Attendance</h1>
+    <hr>
+
+    <!-- Upload File -->
+    <div class="image-wrapper">
+        <div class="m-3">
+            <label for="image-file" class="form-label">Input Image</label>
+            <input class="form-control" type="file" id="image-file" accept="image/*" onchange="previewImage(event)">
+        </div>
+
+        <div id="image-preview">
+            <img src="" id="image">
+        </div>
+    </div>
+    <script>
+        function previewImage(event) {
+            let reader = new FileReader();
+            reader.onload = function () {
+                let output = document.getElementById('image');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+
+    <hr>
+    <section class="table-wrapper">
+        <iframe style="display: none;" name="faltu"></iframe>
+
+        <div class="margin-1rem">
+            <label>Date : </label>
+            <input type="date" onchange="changeDate()" id="date-selector">
+        </div>
+
+        {% for form in forms %}
+            <form class="margin-1rem" action="" method="post" target="faltu" onsubmit="this.style.display = 'none';">
+                {% csrf_token %}
+                {{ form.as_table }}
+                <button type="submit" class="btn btn-outline-dark">Submit</button>
+            </form>
+        {% endfor %}
+
+        <a href="{% url 'mark-attendance' %}" class="btn btn-lg btn-outline-dark margin-1rem">Next</a>
+
+        <script>
+            function changeDate() {
+                let date_selected = document.querySelector('#date-selector').value
+                document.querySelectorAll('input[type="date"]').forEach(date => {
+                    date.value = date_selected
+                });
+            }
+        </script>
+    </section>
+
+{% endblock %}
